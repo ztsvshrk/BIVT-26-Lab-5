@@ -10,7 +10,30 @@ namespace Lab5
             double[] answer = null;
 
             // code here
-
+            int r = matrix.GetLength(0);
+            int c = matrix.GetLength(1);
+            answer = new double[r];
+            for (int i = 0; i < r; i++)
+            {
+                double sum = 0;
+                int cnt = 0;
+                for (int j = 0; j < c; j++)
+                {
+                    if (matrix[i, j] > 0)
+                    {
+                        sum += matrix[i, j];
+                        cnt++;
+                    }
+                }
+                if (cnt > 0)
+                {
+                    answer[i] = sum / cnt;
+                }
+                else
+                {
+                    answer[i] = 0;
+                }
+            }
             // end
 
             return answer;
@@ -20,7 +43,37 @@ namespace Lab5
             int[,] answer = null;
 
             // code here
-
+            int r = matrix.GetLength(0);
+            int c = matrix.GetLength(1);
+            int maxi = 0;
+            int maxj = 0;
+            int max = matrix[0, 0];
+            for (int i = 0; i < r; i++)
+            {
+                for (int j = 0; j < c; j++)
+                {
+                    if (matrix[i, j] > max)
+                    {
+                        max = matrix[i, j];
+                        maxi = i;
+                        maxj = j;
+                    }
+                }
+            }
+            answer = new int[r - 1, c - 1];
+            int a = 0;
+            for (int i = 0; i < r; i++)
+            {
+                if (i == maxi) continue;
+                int b = 0;
+                for (int j = 0; j < c; j++)
+                {
+                    if (j == maxj) continue;
+                    answer[a, b] = matrix[i, j];
+                    b++;
+                }
+                a++;
+            }
             // end
 
             return answer;
