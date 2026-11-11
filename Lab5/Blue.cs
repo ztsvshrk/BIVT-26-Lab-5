@@ -82,7 +82,27 @@ namespace Lab5
         {
 
             // code here
-
+            int r = matrix.GetLength(0);
+            int c = matrix.GetLength(1);
+            for (int i = 0; i < r; i++)
+            {
+                int maxj = 0;
+                int max = matrix[i, 0];
+                for (int j = 1; j < c; j++)
+                {
+                    if (matrix[i, j] > max)
+                    {
+                        max = matrix[i, j];
+                        maxj = j;
+                    }
+                }
+                int temp = matrix[i, maxj];
+                for (int j = maxj; j < c - 1; j++)
+                {
+                    matrix[i, j] = matrix[i, j + 1];
+                }
+                matrix[i, c - 1] = temp;
+            }
             // end
 
         }
